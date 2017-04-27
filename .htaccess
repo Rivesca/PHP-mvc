@@ -1,0 +1,13 @@
+Options -MultiViews
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^([a-zA-Z-_0-9]+)/?$ index.php?controller=$1 [NC,L,QSA]
+RewriteRule ^([a-zA-Z-_0-9]+)/([a-zA-Z-_0-9]+)/?$ index.php?controller=$1&method=$2 [NC,L,QSA]
